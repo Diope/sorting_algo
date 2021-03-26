@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 import './App.style.css';
+import styled from 'styled-components';
 
 import Header from '../../components/Header/Header';
 import Body from '../../components/Body/Body';
@@ -11,7 +12,7 @@ function App() {
 
   useEffect(() => {
     updateList();
-  }, [size])
+  }, [size]);
 
   const rangeChange = () => {
       const userGraphSize = prompt('Enter graph size');
@@ -24,17 +25,22 @@ function App() {
   };
 
   const updateList = () => {
-    const userArraySize = Array.from({length: size}, () => Math.floor(Math.random() * 100));
-    setArr(userArraySize);
+    const randomArr = Array.from({length: size}, () => Math.floor(Math.random() * 100));
+    setArr(randomArr);
     console.log("Size of array: ", size)
-    console.log('Random Array: ', userArraySize);
+    console.log('Random Array: ', randomArr);
   }
   return (
-    <div>
+    <mainContainer>
       <Header rangeChange={rangeChange}/>
       <Body data={arr} />
-    </div>
+    </mainContainer>
   );
 }
+
+const mainContainer = styled.div`
+  padding: 0 10px;
+  width: 100%;
+`;
 
 export default App;

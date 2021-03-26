@@ -2,11 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 45px;
-    width: 100%;
     background-image: linear-gradient(to right, #051421, #042727);
     padding: 15px;
 `;
@@ -16,6 +14,7 @@ export const Button = styled.button`
     height: 40px;
     border-radius: 20px;
     align-items: center;
+    margin-left: 8px;
     padding: 4px 16px; 
     background-color: transparent;
     color: white;
@@ -44,10 +43,8 @@ export const GenerateButton = styled.button`
 `;
 
 export const SortGroupWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
     align-content: center;
-    width: 30%;
-    padding: 25px;
+    padding-left: 25px;
     justify-content: space-between;
 `;
