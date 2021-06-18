@@ -1,7 +1,7 @@
 
 import {Container, Button, SortGroupWrapper, GenerateButton} from './Header.styles';
 
-export default function Header({rangeChange, generateRandomArray}) {
+export default function Header({rangeChange, generateRandomArray, handleBubbleSort}) {
 
     const handleGenerateArray = () => {
         console.log("Button clicked");
@@ -11,7 +11,7 @@ export default function Header({rangeChange, generateRandomArray}) {
             <GenerateButton onClick={generateRandomArray}>Generate New Array</GenerateButton>
             <Button onClick={rangeChange}>Range</Button>
             <SortGroupWrapper>
-                <Button onClick={handleGenerateArray}>Bubble Sort</Button>
+                <Button onClick={handleBubbleSort}>Bubble Sort</Button>
                 <Button onClick={handleGenerateArray}>Quick Sort</Button>
                 <Button onClick={handleGenerateArray}>Heap Sort</Button>
                 <Button onClick={handleGenerateArray}>Merge Sort</Button>

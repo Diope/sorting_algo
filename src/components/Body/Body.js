@@ -6,8 +6,8 @@ import {Bar, Container} from './Body.styles';
 export default function Body({data}) {
     return (
         <Container>
-            {data.map((size) => (
-                <Bar height={`${size}px`} />
+            {data.map((size, idx) => (
+                <Bar height={`${size}px`} key={idx}/>
             ))}
         </Container>
     )
