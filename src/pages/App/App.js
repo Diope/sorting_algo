@@ -6,7 +6,7 @@ import Header from '../../components/Header/Header';
 import Body from '../../components/Body/Body';
 
 import {bubbleSort} from '../../Utilities/sorts';
-import {wait} from '../../Utilities/misc'
+import {wait, swap} from '../../Utilities'
 import SelectInput from '@material-ui/core/Select/SelectInput';
 
 function App() {
@@ -48,8 +48,7 @@ function App() {
     // console.log('Random Array: ', randomArr);
   }
 
-
-  const handleBubbleSort = async () => {
+const handleBubbleSort = async () => {
     const leng = arr.length;
     for (let i = 0; i < leng; i++) {
         for (let j = 0; j < leng; j++) {
@@ -68,12 +67,36 @@ function App() {
     setCurrentNext(null)
   }
 
+  const handleSelectionSort = async () => {
+    const unorderedArr = arr.slice()
+    const arrSize = unorderedArr.length;
+    let i, j, min_idx;
+
+    // unsorted boundary move
+    for (i = 0; i < arrSize; i++) {
+      min_idx = i;
+      // setCurrentIndex(i)
+      for (j = i+1; j < arrSize; j++) {
+          if (arr[j] < arr[min_idx]) {
+            min_idx = j;
+          }
+      }
+      swap(arr, i, min_idx);
+      setCurrentIndex(min_idx);
+      await wait();
+    }
+    setArr([...arr])
+    setCurrentIndex(null)
+    setCurrentNext(null)
+}
+
   return (
     <MainContainer>
       <Header
         rangeChange={rangeChange}
         generateRandomArray={generateRandomArray}
         handleBubbleSort={handleBubbleSort}
+        handleSelectionSort={handleSelectionSort}
       />
       <Body data={arr} />
     </MainContainer>

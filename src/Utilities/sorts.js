@@ -1,26 +1,20 @@
-const swap = (arr, firstIndex, secondIndex) => {
-    const temp = arr[firstIndex];
-    arr[firstIndex] = arr[secondIndex];
-    arr[secondIndex] = temp;
-}
+import {wait, swap} from '../Utilities'
 
-export const bubbleSort = (inputArray, setCurrentIndex, setCurrentNext) => {
-    const leng = inputArray.length;
+export const bubbleSort = async (arr, setArr, setCurrentIndex, setCurrentNext) => {
+    const leng = arr.length;
     for (let i = 0; i < leng; i++) {
         for (let j = 0; j < leng; j++) {
             setCurrentIndex(i);
             setCurrentNext(i + 1);
-            if (inputArray[j] > inputArray[j + 1]) {
-                let temp = inputArray[j];
-                inputArray[j] = inputArray[j + 1]
-                inputArray[j + 1] = temp;
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, arr[j], arr[j + 1]);
             }
+            setArr([...arr])
         }
+        await wait();
     }
     setCurrentIndex(null)
     setCurrentNext(null)
-
-    return inputArray;
 }
 
 export const selectionSort = (inputArray) => {
